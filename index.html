@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nardos Mistire Wolde — Engineering &amp; Technical Work</title>
+  <title>Nardos Mistire Wolde | Engineering &amp; Technical Work</title>
   <style>
-    /* Plain, engineering-first reset and typography */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -40,86 +39,87 @@
     .container {
       max-width: 820px;
       margin: 0 auto;
-      padding: 2.5rem 1.25rem 4rem;
+      padding: 3.5rem 1.5rem 5rem;
     }
 
-    /* Header & Top Navigation */
     header {
       border-bottom: 1px solid var(--border);
-      padding-bottom: 1.75rem;
+      padding-bottom: 2rem;
       margin-bottom: 2.5rem;
     }
 
-    .header-top {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.75rem 1.5rem;
-    }
-
     h1 {
-      font-size: 1.65rem;
+      font-size: 2rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin: 0;
-      color: var(--text);
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.1rem;
-      font-size: 0.9rem;
-    }
-
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 1px;
-    }
-
-    nav a:hover {
-      color: var(--text);
-      border-bottom-color: var(--text);
+      margin: 0 0 0.35rem;
+      color: var(--accent);
     }
 
     .subtitle {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.82rem;
-      color: var(--subtle);
-      margin-top: 0.35rem;
-    }
-
-    .intro {
-      margin: 1.1rem 0 0;
-      font-size: 0.98rem;
+      font-size: 1.05rem;
       color: var(--muted);
-      max-width: 68ch;
+      margin: 0 0 1.1rem;
     }
 
-    .intro strong {
+    .bio {
+      font-size: 0.98rem;
       color: var(--text);
-      font-weight: 600;
+      margin: 0 0 1.35rem;
+      max-width: 72ch;
     }
 
-    /* Section Headings */
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      align-items: center;
+      font-size: 0.92rem;
+    }
+
+    .header-links a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease;
+    }
+
+    .header-links a:hover {
+      border-bottom-color: var(--link);
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--border-strong);
+      border-radius: 5px;
+      background: var(--surface);
+      color: var(--accent) !important;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .btn-link:hover {
+      background: #f9fafb;
+      border-color: #9ca3af;
+    }
+
     section {
-      margin-bottom: 3rem;
+      margin-bottom: 2.75rem;
     }
 
     h2 {
-      font-size: 0.85rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       color: var(--subtle);
       margin: 0 0 1rem;
       font-weight: 600;
     }
 
-    /* Expandable Project Entries (<details>) */
     .project-list {
       display: flex;
       flex-direction: column;
@@ -130,6 +130,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 6px;
+      padding: 1rem 1.2rem;
       transition: border-color 0.15s ease;
     }
 
@@ -141,582 +142,177 @@
       border-color: #9ca3af;
     }
 
-    summary.project-summary {
+    summary.project-header {
       list-style: none;
       cursor: pointer;
-      padding: 1.1rem 1.25rem;
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
+      align-items: flex-start;
       gap: 1rem;
-      user-select: none;
     }
 
-    summary.project-summary::-webkit-details-marker {
+    summary.project-header::-webkit-details-marker {
       display: none;
     }
 
     .project-title-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
+      flex: 1;
     }
 
     .project-title {
       font-size: 1.05rem;
       font-weight: 600;
-      color: var(--text);
-      line-height: 1.35;
+      color: var(--accent);
+      margin: 0 0 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    details.project[open] .project-title {
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    .project-title::before {
+      content: "+";
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 1rem;
+      color: var(--subtle);
+      font-weight: 400;
+      width: 1rem;
+      display: inline-block;
+    }
+
+    details.project[open] .project-title::before {
+      content: "×";
+    }
+
+    .project-summary {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin: 0;
+      padding-left: 1.5rem;
     }
 
     .project-meta {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: var(--subtle);
-    }
-
-    .toggle-indicator {
+      white-space: nowrap;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.85rem;
-      color: var(--subtle);
       padding-top: 0.15rem;
-      flex-shrink: 0;
     }
 
-    details.project[open] .toggle-indicator::after {
-      content: "[-]";
-    }
-
-    details.project:not([open]) .toggle-indicator::after {
-      content: "[+]";
-    }
-
-    /* Expanded Project Body */
     .project-body {
-      padding: 0 1.25rem 1.35rem;
+      margin-top: 1.15rem;
+      padding-top: 1.1rem;
+      padding-left: 1.5rem;
       border-top: 1px solid var(--border);
-      margin-top: 0;
+      font-size: 0.94rem;
+      color: var(--text);
+    }
+
+    .project-body p {
+      margin: 0 0 0.85rem;
     }
 
     .project-body ul {
-      margin: 1rem 0 0;
+      margin: 0 0 1rem;
       padding-left: 1.2rem;
-      color: var(--muted);
-      font-size: 0.94rem;
     }
 
     .project-body li {
-      margin-bottom: 0.45rem;
-    }
-
-    .project-body li strong {
-      color: var(--text);
-      font-weight: 600;
+      margin-bottom: 0.4rem;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
-      margin-top: 1rem;
+      margin-top: 0.85rem;
     }
 
     .tag {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       background: var(--tag-bg);
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 0.15rem 0.5rem;
+      color: var(--muted);
+      padding: 0.2rem 0.55rem;
       border-radius: 4px;
+      border: 1px solid var(--border);
     }
 
-    .external-link {
-      display: inline-block;
-      margin-top: 0.9rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--link);
-      text-decoration: none;
-      border-bottom: 1px solid var(--link);
-      padding-bottom: 1px;
-    }
-
-    .external-link:hover {
-      opacity: 0.8;
-    }
-
-    /* Side-by-Side Media Frame (GIF-like video + Static Plot/Photo) */
     .media-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-      margin-top: 1.1rem;
-    }
-
-    @media (max-width: 640px) {
-      .media-grid {
-        grid-template-columns: 1fr;
-      }
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
     }
 
     figure.media-card {
       margin: 0;
-      background: #f9fafb;
       border: 1px solid var(--border);
       border-radius: 5px;
+      background: #f9fafb;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
-    .media-frame {
+    figure.media-card img,
+    figure.media-card video {
       width: 100%;
-      aspect-ratio: 4 / 3;
-      background: #111827;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .media-frame.light-bg {
-      background: #ffffff;
-    }
-
-    .media-frame video,
-    .media-frame img {
-      width: 100%;
-      height: 100%;
+      height: 240px;
       object-fit: contain;
+      background: #ffffff;
       display: block;
+      border-bottom: 1px solid var(--border);
     }
 
-    .media-fallback {
-      display: none;
-      padding: 1rem;
-      text-align: center;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.75rem;
-      color: #9ca3af;
-      line-height: 1.45;
-    }
-
-    .media-frame.light-bg .media-fallback {
-      color: #6b7280;
-    }
-
-    figcaption {
+    figure.media-card figcaption {
       padding: 0.55rem 0.75rem;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: var(--muted);
-      border-top: 1px solid var(--border);
-      background: var(--surface);
+      line-height: 1.4;
     }
 
-    /* Technical Skills Table/List */
-    .skills-list {
+    .ext-link {
+      display: inline-block;
+      margin-top: 0.4rem;
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .ext-link:hover {
+      text-decoration: underline;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 1.1rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      font-size: 0.94rem;
+      padding: 1.15rem 1.25rem;
     }
 
-    .skill-row {
-      display: grid;
-      grid-template-columns: 190px 1fr;
-      gap: 0.5rem 1rem;
-    }
-
-    @media (max-width: 600px) {
-      .skill-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .skill-label {
+    .skill-group h3 {
+      font-size: 0.85rem;
       font-weight: 600;
-      color: var(--text);
+      margin: 0 0 0.35rem;
+      color: var(--accent);
     }
 
-    .skill-items {
+    .skill-group p {
+      font-size: 0.88rem;
       color: var(--muted);
+      margin: 0;
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid var(--border);
       padding-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       color: var(--subtle);
-    }
-
-    .footer-links {
       display: flex;
+      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    .footer-links a {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border-strong);
-    }
-
-    .footer-links a:hover {
-      border-bottom-color: var(--text);
-    }
-
-    .copy-btn {
-      background: none;
-      border: none;
-      padding: 0;
-      font: inherit;
-      color: var(--text);
-      cursor: pointer;
-      border-bottom: 1px solid var(--border-strong);
-    }
-
-    .copy-btn:hover {
-      border-bottom-color: var(--text);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <div class="header-top">
-        <div>
-          <h1>Nardos Mistire Wolde</h1>
-          <div class="subtitle">Mechanical Engineering (B.S. Candidate, WSU Everett) · Aerospace Engineering (A.S.)</div>
-        </div>
-        <nav aria-label="Primary navigation">
-          <a href="#projects">Projects</a>
-          <a href="#skills">Technical Skills</a>
-          <a href="https://www.linkedin.com/in/nardoswolde" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/Nardosmisu" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </nav>
-      </div>
-      <p class="intro">
-        Technical archive of engineering simulations, physical prototypes, and analytical workflows—focused on <strong>molecular dynamics</strong>, <strong>mechanical design</strong>, and <strong>multi-variable data modeling</strong>. Select any project title below to inspect methodology, plots, and test footage.
-      </p>
-    </header>
-
-    <!-- Projects Section -->
-    <section id="projects">
-      <h2>Technical Projects (Click Title to Expand)</h2>
-
-      <div class="project-list">
-        <!-- Project 1: WSU Undergraduate Research (Expanded by default) -->
-        <details class="project" open>
-          <summary class="project-summary">
-            <div class="project-title-wrap">
-              <span class="project-title">Investigation of Dynamic Testing and Simulation for Aerospace Safety Applications</span>
-              <span class="project-meta">WSU Sponsored Undergraduate Research · LAMMPS / MATLAB / OVITO</span>
-            </div>
-            <span class="toggle-indicator" aria-hidden="true"></span>
-          </summary>
-
-          <div class="project-body">
-            <ul>
-              <li><strong>Objective:</strong> Investigating how material properties, loading conditions, and modeling assumptions affect structural response under dynamic and transient impact regimes to improve correlation between physical testing and computational models.</li>
-              <li><strong>Atomistic Simulation Pipeline:</strong> Built uniaxial tensile and compression molecular dynamics runs in <strong>LAMMPS</strong> on FCC aluminum baselines before expanding the simulation matrix to copper and ceramic material systems.</li>
-              <li><strong>Quantitative Post-Processing:</strong> Wrote automated <strong>MATLAB</strong> scripts (<code>plo_stress.m</code>) to parse <code>.def1.txt</code> deformation outputs, capturing linear elastic loading up to <strong>~8 GPa</strong> near <strong>0.15 strain</strong> followed by post-peak yielding and softening.</li>
-              <li><strong>Microstructural Visualization:</strong> Rendered atomistic lattice distortion and defect evolution in <strong>OVITO</strong> to correlate dislocation/structural transitions directly with macroscopic stress-strain curves.</li>
-            </ul>
-
-            <!-- GIF-like looping OVITO video + Static MATLAB Stress-Strain Plot -->
-            <div class="media-grid">
-              <figure class="media-card">
-                <div class="media-frame">
-                  <video
-                    src="assets/wsu-research-ovito.mp4"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    aria-label="OVITO atomistic simulation of aluminum under uniaxial tensile strain"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                  ></video>
-                  <div class="media-fallback">
-                    Upload OVITO clip to:<br><strong>assets/wsu-research-ovito.mp4</strong>
-                  </div>
-                </div>
-                <figcaption>OVITO atomistic lattice evolution during uniaxial tensile loading (Al baseline).</figcaption>
-              </figure>
-
-              <figure class="media-card">
-                <div class="media-frame light-bg">
-                  <img
-                    src="assets/wsu-research-stress-strain.png"
-                    alt="MATLAB stress-strain curve showing stress in GPa versus strain up to 0.2"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                  />
-                  <div class="media-fallback">
-                    Upload MATLAB plot to:<br><strong>assets/wsu-research-stress-strain.png</strong>
-                  </div>
-                </div>
-                <figcaption>MATLAB stress-strain response extracted from LAMMPS deformation output (~8 GPa peak at 0.15 strain).</figcaption>
-              </figure>
-            </div>
-
-            <div class="tags">
-              <span class="tag">LAMMPS</span>
-              <span class="tag">OVITO</span>
-              <span class="tag">MATLAB</span>
-              <span class="tag">Molecular Dynamics</span>
-              <span class="tag">Stress-Strain Analysis</span>
-            </div>
-          </div>
-        </details>
-
-        <!-- Project 2: Stair-Climbing Robot -->
-        <details class="project">
-          <summary class="project-summary">
-            <div class="project-title-wrap">
-              <span class="project-title">Tri-Lobe Stair-Climbing Robot</span>
-              <span class="project-meta">Team Mechanical Prototype · Creo Parametric / Tamiya 4-Speed Gearbox / $20 Budget</span>
-            </div>
-            <span class="toggle-indicator" aria-hidden="true"></span>
-          </summary>
-
-          <div class="project-body">
-            <ul>
-              <li><strong>Mechanism Trade-Offs:</strong> Modeled multiple climbing geometries in <strong>Creo Parametric</strong> with a two-person team and selected a three-spoke (tri-lobe) rotary leg profile to hook onto vertical step risers without complex linkages.</li>
-              <li><strong>Drivetrain &amp; Budget Optimization:</strong> Built under a strict <strong>$20 total hardware budget</strong> using a <strong>Tamiya 4-Speed Crank Axle Gearbox</strong> driving a central shaft coupled directly to custom-cut corrugated cardboard tri-lobe plates and a rear stabilizer tail.</li>
-              <li><strong>Performance Advantage:</strong> Minimized chassis mass through cardboard structural cutouts so a compact battery-powered DC motor delivered enough torque at the axle to climb multi-step wooden test stairs reliably in competition.</li>
-            </ul>
-
-            <!-- GIF-like looping Stair Climb Video + Build Photo -->
-            <div class="media-grid">
-              <figure class="media-card">
-                <div class="media-frame">
-                  <video
-                    src="assets/stair-climber-test.mp4"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    aria-label="Stair-climbing robot ascending wooden test stairs"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                  ></video>
-                  <div class="media-fallback">
-                    Upload climb test video to:<br><strong>assets/stair-climber-test.mp4</strong>
-                  </div>
-                </div>
-                <figcaption>Competition test run ascending multi-step wooden staircase under battery power.</figcaption>
-              </figure>
-
-              <figure class="media-card">
-                <div class="media-frame">
-                  <img
-                    src="assets/stair-climber-build.jpg"
-                    alt="Cardboard tri-lobe stair-climbing robot chassis and Tamiya gearbox assembly"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                  />
-                  <div class="media-fallback">
-                    Upload chassis photo to:<br><strong>assets/stair-climber-build.jpg</strong>
-                  </div>
-                </div>
-                <figcaption>Central axle coupling between the 4-speed gearbox and tri-lobe cardboard legs.</figcaption>
-              </figure>
-            </div>
-
-            <div class="tags">
-              <span class="tag">Creo Parametric</span>
-              <span class="tag">Gearbox &amp; Torque Sizing</span>
-              <span class="tag">Rapid Prototyping</span>
-              <span class="tag">Design-to-Cost ($20)</span>
-            </div>
-          </div>
-        </details>
-
-        <!-- Project 3: Tableau Multi-Variable Dashboard -->
-        <details class="project">
-          <summary class="project-summary">
-            <div class="project-title-wrap">
-              <span class="project-title">Multi-Variable U.S. Survey Data Filtering &amp; Tableau Dashboard (2020–2022)</span>
-              <span class="project-meta">Data Wrangling &amp; Statistical Interval Modeling · Tableau Public</span>
-            </div>
-            <span class="toggle-indicator" aria-hidden="true"></span>
-          </summary>
-
-          <div class="project-body">
-            <ul>
-              <li><strong>Dimensional Filtering &amp; Cleaning:</strong> Processed a multi-year U.S. federal survey dataset by isolating core variables (<strong>age, sex, state, year, and three primary response indicators</strong>) and stripping redundant columns to eliminate noise.</li>
-              <li><strong>Statistical Reliability Encoding:</strong> Retained upper and lower <strong>95% confidence interval (CI)</strong> bounds alongside point estimates so subgroup comparisons reflect true sampling uncertainty rather than raw averages alone.</li>
-              <li><strong>Interactive Architecture:</strong> Built a 9-view <strong>Tableau</strong> dashboard supporting cross-filtering across geographic states, demographic splits, and time periods.</li>
-            </ul>
-
-            <a
-              class="external-link"
-              href="https://public.tableau.com/app/profile/nardos.wolde/viz/MentalHealthCareAccessintheUnitedStates2020-2022_Nardos_W/MentalHealthCareAccessintheUnitedStates2020-2022_Nardos_W"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Open Interactive Tableau Dashboard &#8599;
-            </a>
-
-            <div class="tags">
-              <span class="tag">Tableau</span>
-              <span class="tag">Data Cleaning &amp; Filtering</span>
-              <span class="tag">95% Confidence Intervals</span>
-              <span class="tag">Multi-Variable Aggregation</span>
-            </div>
-          </div>
-        </details>
-
-        <!-- Project 4: Spotify Space Habitation Technical Series -->
-        <details class="project">
-          <summary class="project-summary">
-            <div class="project-title-wrap">
-              <span class="project-title">Making Space Hospitable for Humans — Spacecraft Life-Support Evolution</span>
-              <span class="project-meta">Two-Episode Technical Audio Series · Nvolve STEM</span>
-            </div>
-            <span class="toggle-indicator" aria-hidden="true"></span>
-          </summary>
-
-          <div class="project-body">
-            <ul>
-              <li><strong>Systems Comparison:</strong> Synthesized NASA technical documentation, mission logs, and astronaut records comparing early single-orbit life support (Vostok / Yuri Gagarin) against modern closed-loop environmental control systems (Soyuz MS-21).</li>
-              <li><strong>Technical Scope:</strong> Structured a two-episode audio breakdown covering cabin atmosphere regulation, microgravity physiological countermeasures, and engineering constraints for long-duration Mars transit.</li>
-            </ul>
-
-            <a
-              class="external-link"
-              href="https://open.spotify.com/episode/5yrX83CVyODSR3L7FOPACg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Listen on Spotify &#8599;
-            </a>
-
-            <div class="tags">
-              <span class="tag">Life Support Systems</span>
-              <span class="tag">Human Factors</span>
-              <span class="tag">Technical Synthesis</span>
-              <span class="tag">Audio Production</span>
-            </div>
-          </div>
-        </details>
-
-        <!-- Project 5: AIAA DBF (Lighter Mention - Next Year Prep) -->
-        <details class="project">
-          <summary class="project-summary">
-            <div class="project-title-wrap">
-              <span class="project-title">AIAA Design, Build, Fly (DBF) — UAV Sizing &amp; Fuselage CAD</span>
-              <span class="project-meta">WSU Everett Team · Next-Year Competition Preparation</span>
-            </div>
-            <span class="toggle-indicator" aria-hidden="true"></span>
-          </summary>
-
-          <div class="project-body">
-            <ul>
-              <li><strong>Constraint Modeling:</strong> Developing <strong>Python</strong> and <strong>MATLAB</strong> sensitivity scripts to evaluate propulsion power caps (<strong>100 W</strong> battery limit) and total gross weight limits (<strong>55 lb</strong> max) alongside <strong>Onshape</strong> fuselage packaging ahead of next year's competition cycle.</li>
-            </ul>
-
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">MATLAB</span>
-              <span class="tag">Onshape</span>
-              <span class="tag">Aircraft Sizing</span>
-            </div>
-          </div>
-        </details>
-
-        <!-- Project 6: Boeing Scholars (Lighter Mention - Shadowing Phase) -->
-        <details class="project">
-          <summary class="project-summary">
-            <div class="project-title-wrap">
-              <span class="project-title">Boeing Scholars — Aerospace Structural &amp; Dynamic Testing</span>
-              <span class="project-meta">WSU Everett · Senior Capstone Shadowing</span>
-            </div>
-            <span class="toggle-indicator" aria-hidden="true"></span>
-          </summary>
-
-          <div class="project-body">
-            <ul>
-              <li><strong>Industry Shadowing:</strong> Shadowing senior engineering teams and Boeing mentors on experimental test setup, instrumentation, and manufacturing assembly workflows in preparation for leading independent testing next year.</li>
-            </ul>
-
-            <div class="tags">
-              <span class="tag">Experimental Instrumentation</span>
-              <span class="tag">Aerospace Structures</span>
-              <span class="tag">Systems Verification</span>
-            </div>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- Technical Skills Section -->
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <div class="skills-list">
-        <div class="skill-row">
-          <div class="skill-label">Simulation &amp; Analysis</div>
-          <div class="skill-items">LAMMPS (Molecular Dynamics), OVITO, MATLAB, Python, Tableau</div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-label">CAD &amp; Mechanical</div>
-          <div class="skill-items">Creo Parametric, Onshape, Rapid Prototyping, Gearbox &amp; Linkage Sizing</div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-label">Data &amp; Scripting</div>
-          <div class="skill-items">Stress-Strain Curve Extraction, 95% CI Filtering, Multi-Variable Aggregation</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div>Nardos Mistire Wolde · Everett, WA</div>
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/nardoswolde" target="_blank" rel="noopener noreferrer">linkedin.com/in/nardoswolde</a>
-        <a href="https://github.com/Nardosmisu" target="_blank" rel="noopener noreferrer">github.com/Nardosmisu</a>
-        <button type="button" class="copy-btn" id="copy-email">nardos.wolde@wsu.edu</button>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // Copy email cleanly without alert()
-    const copyBtn = document.getElementById('copy-email');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        const email = 'nardos.wolde@wsu.edu';
-        const temp = document.createElement('input');
-        temp.value = email;
-        document.body.appendChild(temp);
-        temp.select();
-        try {
-          document.execCommand('copy');
-          const original = copyBtn.textContent;
-          copyBtn.textContent = 'Copied: ' + email;
-          setTimeout(() => { copyBtn.textContent = original; }, 2000);
-        } catch (err) {
-          copyBtn.textContent = email;
-        }
-        document.body.removeChild(temp);
-      });
-    }
-  </script>
-</body>
-</html>
+      gap: 0
