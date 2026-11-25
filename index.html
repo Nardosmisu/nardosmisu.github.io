@@ -315,4 +315,260 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 0
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      summary.project-header {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      .project-summary,
+      .project-body {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Nardos Mistire Wolde</h1>
+      <p class="subtitle">Mechanical Engineering Student (B.S.) | Washington State University Everett</p>
+      <p class="bio">
+        Junior mechanical engineering undergraduate with an A.S. in Aerospace Engineering, focused on computational mechanics, structural testing, propulsion and UAV sizing, and CAD prototyping.
+      </p>
+      <div class="header-links">
+        <a class="btn-link" href="https://www.linkedin.com/in/nardoswolde" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Technical Tools</a>
+      </div>
+    </header>
+
+    <section id="projects">
+      <h2>Engineering &amp; Technical Work</h2>
+      <div class="project-list">
+
+        <details class="project" open>
+          <summary class="project-header">
+            <div class="project-title-wrap">
+              <div class="project-title">Investigation of Dynamic Testing and Simulation for Aerospace Safety Applications</div>
+              <p class="project-summary">Atomistic tensile and compression modeling with LAMMPS, MATLAB stress-strain post-processing, and OVITO visualization.</p>
+            </div>
+            <span class="project-meta">2026 | WSU Research</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              Junior undergraduate research supporting a multidisciplinary aerospace engineering effort evaluating structural and material response under dynamic and transient loading conditions.
+            </p>
+            <ul>
+              <li>Built a reproducible molecular dynamics simulation and post-processing pipeline using LAMMPS, MATLAB, and OVITO, establishing baseline tensile and compression runs on aluminum before expanding to copper and ceramic systems.</li>
+              <li>Processed LAMMPS deformation output files in MATLAB (<code>plo_stress.m</code>) to extract stress-strain curves, capturing linear elastic loading up to approximately 8 GPa near 0.15 strain followed by post-peak softening and yielding.</li>
+              <li>Visualized atomic lattice evolution, defect nucleation, and structural distortion in OVITO to link microscale deformation mechanisms with macroscopic mechanical parameters.</li>
+            </ul>
+            <div class="media-grid">
+              <figure class="media-card">
+                <video src="assets/wsu-research-ovito.mp4" autoplay loop muted playsinline></video>
+                <figcaption>OVITO atomistic simulation playback showing lattice deformation and structural evolution during aluminum tensile loading.</figcaption>
+              </figure>
+              <figure class="media-card">
+                <img src="assets/wsu-research-stress-strain.png" alt="MATLAB tensile stress-strain curve for aluminum peaking near 8 GPa at 0.15 strain" />
+                <figcaption>Tensile stress-strain curve plotted in MATLAB from LAMMPS deformation data (peak stress ~8 GPa at ~0.15 strain).</figcaption>
+              </figure>
+            </div>
+            <div class="tags">
+              <span class="tag">LAMMPS</span>
+              <span class="tag">MATLAB</span>
+              <span class="tag">OVITO</span>
+              <span class="tag">Molecular Dynamics</span>
+              <span class="tag">Aerospace Structures</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="project">
+          <summary class="project-header">
+            <div class="project-title-wrap">
+              <div class="project-title">Low-Cost Tri-Lobe Stair-Climbing Robot</div>
+              <p class="project-summary">CAD trade study in Creo Parametric and $20-budget physical prototype using a Tamiya 4-speed crank axle gearbox.</p>
+            </div>
+            <span class="project-meta">Team Build | $20 Budget</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              Designed, modeled, and fabricated a lightweight stair-climbing robot with a teammate under a strict $20 total parts budget for course competition testing.
+            </p>
+            <ul>
+              <li>Evaluated candidate climbing geometries in Creo Parametric and selected a tri-lobe rotary leg mechanism capable of hooking onto step risers without complex linkages.</li>
+              <li>Integrated a Tamiya 4-Speed Crank Axle Gearbox (Item 70110) and battery pack as the central drive shaft, rotating custom-cut corrugated cardboard tri-lobe plates paired with a trailing stabilizer tail.</li>
+              <li>Iterated shaft alignment and chassis weight distribution through physical trial runs to successfully climb multi-step wooden test stairs.</li>
+            </ul>
+            <div class="media-grid">
+              <figure class="media-card">
+                <video src="assets/stair-climber-test.mp4" autoplay loop muted playsinline></video>
+                <figcaption>Competition test run demonstrating continuous multi-step climbing via rotating tri-lobe cardboard legs.</figcaption>
+              </figure>
+              <figure class="media-card">
+                <img src="assets/stair-climber-build.jpg" alt="Early stair-climbing robot components including tri-lobe cutout, gearbox, and battery pack" />
+                <figcaption>Sub-assembly layout showing cut cardboard tri-lobe geometry, battery pack, and high-torque gearbox.</figcaption>
+              </figure>
+              <figure class="media-card">
+                <img src="assets/stair-climber-gearbox.jpg" alt="Tamiya 4-Speed Crank Axle Gearbox specification sheet" />
+                <figcaption>Drivetrain specification: Tamiya 4-Speed Crank Axle Gearbox selected to stay within the $20 build budget.</figcaption>
+              </figure>
+              <figure class="media-card">
+                <img src="assets/stair-climber-final.jpg" alt="Assembled final cardboard stair-climbing robot chassis on lab bench" />
+                <figcaption>Completed prototype assembly showing central axle shaft coupling the gearbox directly to both tri-lobe drive plates.</figcaption>
+              </figure>
+            </div>
+            <div class="tags">
+              <span class="tag">Creo Parametric</span>
+              <span class="tag">Mechanism Design</span>
+              <span class="tag">Rapid Prototyping</span>
+              <span class="tag">Drivetrain Integration</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="project">
+          <summary class="project-header">
+            <div class="project-title-wrap">
+              <div class="project-title">AIAA Design, Build, Fly (DBF) | UAV Sizing &amp; CAD</div>
+              <p class="project-summary">Mission score sensitivity modeling in MATLAB and fuselage CAD layout in Onshape ahead of the 2027 competition.</p>
+            </div>
+            <span class="project-meta">2026 to Present | WSU Everett</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              Contributing to the WSU Everett AIAA Design, Build, Fly team during the preliminary design and preparation cycle for next year's competition.
+            </p>
+            <ul>
+              <li>Developed MATLAB sensitivity analysis scripts evaluating how payload weight, lap count, flight time, and sensor weight affect total mission scoring across M1, M2, M3, and Ground Mission requirements under 100 Wh propulsion and 55 lb TOGW constraints.</li>
+              <li>Assisted with fuselage geometry and internal payload bay modeling in Onshape to accommodate mechanical retention and remote sensor deployment requirements.</li>
+            </ul>
+            <div class="media-grid">
+              <figure class="media-card">
+                <img src="assets/dbf-sensitivity.png" alt="MATLAB sensitivity analysis script and mission score plots for 2027 AIAA DBF rules" />
+                <figcaption>2027 rules sensitivity script and total mission score plots comparing M2, M3, and Ground Mission sensitivities.</figcaption>
+              </figure>
+              <figure class="media-card">
+                <img src="assets/dbf-mission-overview.png" alt="AIAA DBF mission overview table detailing M1, M2, M3, and GM scoring equations and constraints" />
+                <figcaption>Mission scoring equations and sub-system constraints (6 ft max wingspan, 100 Wh energy limit, TOGW under 55 lb) driving sizing trade-offs.</figcaption>
+              </figure>
+            </div>
+            <div class="tags">
+              <span class="tag">MATLAB</span>
+              <span class="tag">Python</span>
+              <span class="tag">Onshape</span>
+              <span class="tag">UAV Sizing</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="project">
+          <summary class="project-header">
+            <div class="project-title-wrap">
+              <div class="project-title">Boeing Scholars Program | Senior Capstone Shadowing</div>
+              <p class="project-summary">Observing experimental setup, instrumentation, and structural testing workflows on a Boeing-sponsored senior project.</p>
+            </div>
+            <span class="project-meta">2026 to Present | WSU Everett</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              Selected as a junior Boeing Scholar at WSU Everett, shadowing senior engineering teams and Boeing mentors on an industry-sponsored aerospace safety project in preparation for leading senior capstone work next year.
+            </p>
+            <ul>
+              <li>Observing test matrix planning, data acquisition setup, and experimental validation procedures alongside senior capstone students.</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">Experimental Testing</span>
+              <span class="tag">Instrumentation</span>
+              <span class="tag">Aerospace Safety</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="project">
+          <summary class="project-header">
+            <div class="project-title-wrap">
+              <div class="project-title">Multi-Variable Dataset Structuring &amp; Interactive Dashboard (Tableau)</div>
+              <p class="project-summary">Cleaned, filtered, and disaggregated a multi-year federal survey dataset across demographic and state variables.</p>
+            </div>
+            <span class="project-meta">Spring 2026 | Nvolve</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              Processed and structured a high-dimensional U.S. government survey dataset (2020 to 2022) to isolate key variables and build a nine-chart interactive visual suite in Tableau.
+            </p>
+            <ul>
+              <li>Filtered complex multi-indicator records down to core dimensions (year, state, age, sex, and confidence interval bounds) to eliminate noise and maintain statistical comparability.</li>
+              <li>Built cross-filtered visual comparisons and state-level breakdowns enabling rapid querying across demographic slices.</li>
+            </ul>
+            <a class="ext-link" href="https://public.tableau.com/app/profile/nardos.wolde/viz/MentalHealthCareAccessintheUnitedStates2020-2022_Nardos_W/MentalHealthCareAccessintheUnitedStates2020-2022_Nardos_W" target="_blank" rel="noopener noreferrer">
+              View Interactive Tableau Dashboard &rarr;
+            </a>
+            <div class="tags">
+              <span class="tag">Tableau</span>
+              <span class="tag">Data Cleaning</span>
+              <span class="tag">Variable Filtering</span>
+              <span class="tag">Data Visualization</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="project">
+          <summary class="project-header">
+            <div class="project-title-wrap">
+              <div class="project-title">Making Space Hospitable for Humans (STEM Audio Series)</div>
+              <p class="project-summary">Two-part technical audio production comparing Vostok 1 life-support systems with modern Soyuz MS-21 spacecraft architecture.</p>
+            </div>
+            <span class="project-meta">Fall 2025 | Nvolve</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              Co-researched, scripted, and edited a two-episode STEM podcast examining how spacecraft environmental control and life-support systems evolved from Yuri Gagarin's Vostok 1 mission to modern Soyuz MS-21 operations.
+            </p>
+            <ul>
+              <li>Synthesized NASA mission documentation and aerospace physiology literature covering microgravity adaptation, cabin atmosphere regulation, and long-duration mission constraints.</li>
+            </ul>
+            <a class="ext-link" href="https://open.spotify.com/episode/5yrX83CVyODSR3L7FOPACg" target="_blank" rel="noopener noreferrer">
+              Listen on Spotify &rarr;
+            </a>
+            <div class="tags">
+              <span class="tag">Life Support Systems</span>
+              <span class="tag">Spaceflight History</span>
+              <span class="tag">Technical Communication</span>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Technical Tools</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Simulation &amp; Analysis</h3>
+          <p>MATLAB, Python, LAMMPS, OVITO</p>
+        </div>
+        <div class="skill-group">
+          <h3>CAD &amp; Prototyping</h3>
+          <p>Onshape, Creo Parametric, Mechanical Fabrication</p>
+        </div>
+        <div class="skill-group">
+          <h3>Data &amp; Documentation</h3>
+          <p>Tableau, Technical Reporting, Experimental Data Reduction</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Nardos Mistire Wolde | Everett, WA</span>
+      <span><a href="https://www.linkedin.com/in/nardoswolde" target="_blank" rel="noopener noreferrer" style="color: var(--link); text-decoration: none;">linkedin.com/in/nardoswolde</a></span>
+    </footer>
+  </div>
+</body>
+</html>
