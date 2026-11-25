@@ -1,903 +1,722 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nardos Mistire Wolde | Mechanical & Aerospace Engineering Portfolio</title>
-  <!-- Google Fonts: Inter & JetBrains Mono for technical precision -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            slate: {
-              850: '#151e32',
-              925: '#0b1120',
-              950: '#060a14',
-            },
-            aerospace: {
-              400: '#38bdf8',
-              500: '#0ea5e9',
-              600: '#0284c7',
-            }
-          }
-        }
+  <title>Nardos Mistire Wolde — Engineering &amp; Technical Work</title>
+  <style>
+    /* Plain, engineering-first reset and typography */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --subtle: #6b7280;
+      --border: #e5e7eb;
+      --border-strong: #d1d5db;
+      --accent: #0f172a;
+      --link: #0369a1;
+      --tag-bg: #f3f4f6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    /* Header & Top Navigation */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .header-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem 1.5rem;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--text);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
+
+    .subtitle {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--subtle);
+      margin-top: 0.35rem;
+    }
+
+    .intro {
+      margin: 1.1rem 0 0;
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 68ch;
+    }
+
+    .intro strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Section Headings */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 0.85rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--subtle);
+      margin: 0 0 1rem;
+      font-weight: 600;
+    }
+
+    /* Expandable Project Entries (<details>) */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    details.project {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.15s ease;
+    }
+
+    details.project:hover {
+      border-color: var(--border-strong);
+    }
+
+    details.project[open] {
+      border-color: #9ca3af;
+    }
+
+    summary.project-summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    summary.project-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .project-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .project-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    details.project[open] .project-title {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .project-meta {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      color: var(--subtle);
+    }
+
+    .toggle-indicator {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      color: var(--subtle);
+      padding-top: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    details.project[open] .toggle-indicator::after {
+      content: "[-]";
+    }
+
+    details.project:not([open]) .toggle-indicator::after {
+      content: "[+]";
+    }
+
+    /* Expanded Project Body */
+    .project-body {
+      padding: 0 1.25rem 1.35rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0;
+    }
+
+    .project-body ul {
+      margin: 1rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .project-body li {
+      margin-bottom: 0.45rem;
+    }
+
+    .project-body li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.75rem;
+      background: var(--tag-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .external-link {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid var(--link);
+      padding-bottom: 1px;
+    }
+
+    .external-link:hover {
+      opacity: 0.8;
+    }
+
+    /* Side-by-Side Media Frame (GIF-like video + Static Plot/Photo) */
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-top: 1.1rem;
+    }
+
+    @media (max-width: 640px) {
+      .media-grid {
+        grid-template-columns: 1fr;
       }
     }
-  </script>
-  <style>
-    /* Subtle aerospace blueprint grid background */
-    .bg-aero-grid {
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+
+    figure.media-card {
+      margin: 0;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    html:not(.dark) .bg-aero-grid {
-      background-image: 
-        linear-gradient(to right, rgba(2, 132, 199, 0.07) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(2, 132, 199, 0.07) 1px, transparent 1px);
+
+    .media-frame {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
+
+    .media-frame.light-bg {
+      background: #ffffff;
     }
-    ::-webkit-scrollbar-track {
-      background: transparent;
+
+    .media-frame video,
+    .media-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.3);
-      border-radius: 9999px;
+
+    .media-fallback {
+      display: none;
+      padding: 1rem;
+      text-align: center;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.45;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(56, 189, 248, 0.5);
+
+    .media-frame.light-bg .media-fallback {
+      color: #6b7280;
     }
-    /* Smooth card hover elevation */
-    .project-card {
-      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+
+    figcaption {
+      padding: 0.55rem 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: var(--surface);
     }
-    .project-card:hover {
-      transform: translateY(-4px);
+
+    /* Technical Skills Table/List */
+    .skills-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.94rem;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 0.5rem 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .skill-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .skill-label {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .skill-items {
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.86rem;
+      color: var(--subtle);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: var(--text);
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      color: var(--text);
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .copy-btn:hover {
+      border-bottom-color: var(--text);
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased selection:bg-sky-500/30 selection:text-sky-300 transition-colors duration-300">
-
-  <!-- Toast Notification Container (Replaces alert()) -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
-
-  <!-- Navigation Header -->
-  <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <!-- Brand / Callsign -->
-        <a href="#top" class="flex items-center gap-3 group">
-          <div class="w-9 h-9 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 font-mono font-semibold text-sm group-hover:bg-sky-500 group-hover:text-white transition-all">
-            NMW
-          </div>
-          <div class="flex flex-col">
-            <span class="font-bold tracking-tight text-sm sm:text-base leading-none">Nardos Mistire Wolde</span>
-            <span class="font-mono text-[11px] text-slate-500 dark:text-slate-400 mt-1">MECH & AERO ENG</span>
-          </div>
-        </a>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
-          <a href="#projects" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Projects</a>
-          <a href="#skills" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Technical Skills</a>
-          <a href="#timeline" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Experience & Education</a>
-          <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Contact</a>
-        </nav>
-
-        <!-- Actions: Theme Toggle & Mobile Menu Button -->
-        <div class="flex items-center gap-2">
-          <button id="theme-toggle" type="button" aria-label="Toggle color theme" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-900/70 text-slate-700 dark:text-slate-300 hover:border-sky-500/50 hover:text-sky-500 transition-all">
-            <!-- Sun Icon (shown in dark mode) -->
-            <svg id="icon-sun" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="4"></circle>
-              <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
-            </svg>
-            <!-- Moon Icon (shown in light mode) -->
-            <svg id="icon-moon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-            </svg>
-          </button>
-
-          <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium shadow-sm shadow-sky-500/20 transition-all">
-            <span>Connect</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
-
-          <!-- Mobile Hamburger -->
-          <button id="mobile-menu-btn" type="button" aria-label="Open menu" class="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Dropdown Menu -->
-      <div id="mobile-menu" class="hidden md:hidden pb-4 pt-2 border-t border-slate-200 dark:border-slate-800 space-y-1">
-        <a href="#projects" class="block px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Projects</a>
-        <a href="#skills" class="block px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Technical Skills</a>
-        <a href="#timeline" class="block px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-900">Experience & Education</a>
-        <a href="#contact" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-sky-600 dark:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-900">Contact</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section id="top" class="relative overflow-hidden bg-aero-grid border-b border-slate-200/80 dark:border-slate-800/80">
-    <!-- Subtle radial glow -->
-    <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[42rem] h-[22rem] rounded-full bg-sky-500/10 blur-3xl"></div>
-
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-        
-        <!-- Left Column: Intro & Value Prop -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/25 text-sky-700 dark:text-sky-300 font-mono text-xs font-medium">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>BS MECHANICAL ENGINEERING ’28 • EVERETT, WA</span>
-          </div>
-
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
-            Nardos Mistire <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-cyan-400">Wolde</span>
-          </h1>
-
-          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-            Junior Mechanical Engineering student at <strong class="font-semibold text-slate-900 dark:text-white">Washington State University Everett</strong> holding an <strong class="font-semibold text-slate-900 dark:text-white">Associate of Science in Aerospace Engineering</strong> from Montgomery College. Specializing in propulsion systems, aerodynamics, thermodynamics, fluid mechanics, materials science, and engineering design—bridging analytical simulation with hands-on aircraft design and student leadership.
-          </p>
-
-          <!-- Focus Tags -->
-          <div class="flex flex-wrap gap-2 pt-1">
-            <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-200/70 dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 text-slate-700 dark:text-slate-300">Propulsion & Aerodynamics</span>
-            <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-200/70 dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 text-slate-700 dark:text-slate-300">Thermo, Fluids & Materials</span>
-            <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-200/70 dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 text-slate-700 dark:text-slate-300">Engineering Design & CAD</span>
-            <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-200/70 dark:bg-slate-900 border border-slate-300/80 dark:border-slate-800 text-slate-700 dark:text-slate-300">Campus Leadership</span>
-          </div>
-
-          <!-- CTA Buttons -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
-            <a href="#projects" class="px-6 py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm shadow-lg shadow-sky-500/20 transition-all inline-flex items-center gap-2">
-              <span>Explore Engineering & Leadership Work</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
-              </svg>
-            </a>
-            <a href="#timeline" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-all">
-              Academic & Experience Timeline
-            </a>
-          </div>
-        </div>
-
-        <!-- Right Column: Aerospace Telemetry / Profile Dossier Card -->
-        <div class="lg:col-span-5">
-          <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-950/10 dark:shadow-black/40 p-6 space-y-5 backdrop-blur-sm">
-            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div class="flex items-center gap-2.5">
-                <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
-                <span class="font-mono text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Engineering Dossier</span>
-              </div>
-              <span class="font-mono text-xs px-2.5 py-0.5 rounded bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">ACTIVE • 2026</span>
-            </div>
-
-            <!-- Key Telemetry Metrics -->
-            <div class="grid grid-cols-2 gap-3">
-              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/80 dark:border-slate-800/80">
-                <div class="font-mono text-[11px] text-slate-500 dark:text-slate-400 uppercase">Current Program</div>
-                <div class="font-bold text-sm mt-1 text-slate-900 dark:text-white">WSU Everett</div>
-                <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">B.S. Mechanical Eng.</div>
-              </div>
-              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/80 dark:border-slate-800/80">
-                <div class="font-mono text-[11px] text-slate-500 dark:text-slate-400 uppercase">Prior Degree</div>
-                <div class="font-bold text-sm mt-1 text-slate-900 dark:text-white">Montgomery College</div>
-                <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">A.S. Aerospace Eng.</div>
-              </div>
-              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/80 dark:border-slate-800/80">
-                <div class="font-mono text-[11px] text-slate-500 dark:text-slate-400 uppercase">Industry Cohort</div>
-                <div class="font-bold text-sm mt-1 text-sky-600 dark:text-sky-400">Boeing Scholar</div>
-                <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Senior Mentor Shadowing</div>
-              </div>
-              <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/80 dark:border-slate-800/80">
-                <div class="font-mono text-[11px] text-slate-500 dark:text-slate-400 uppercase">Student Gov & Clubs</div>
-                <div class="font-bold text-sm mt-1 text-slate-900 dark:text-white">ASWSUE & SEDS</div>
-                <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Director & Chapter Lead</div>
-              </div>
-            </div>
-
-            <!-- Decorative SVG Airfoil / Trajectory Graphic -->
-            <div class="rounded-xl bg-slate-950 border border-slate-800 p-4 relative overflow-hidden">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
-                <span>AIAA DBF // CONSTRAINT ENVELOPE</span>
-                <span class="text-sky-400">100W • ≤55 LB</span>
-              </div>
-              <svg viewBox="0 0 320 68" class="w-full h-14 overflow-visible" aria-hidden="true">
-                <defs>
-                  <linearGradient id="airfoilGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/>
-                    <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.2"/>
-                  </linearGradient>
-                </defs>
-                <!-- Grid lines -->
-                <line x1="0" y1="34" x2="320" y2="34" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1"/>
-                <line x1="80" y1="0" x2="80" y2="68" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1"/>
-                <line x1="200" y1="0" x2="200" y2="68" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1"/>
-                <!-- Streamlines -->
-                <path d="M 0 14 Q 110 4, 320 18" fill="none" stroke="#0ea5e9" stroke-opacity="0.35" stroke-width="1.2"/>
-                <path d="M 0 54 Q 110 62, 320 48" fill="none" stroke="#0ea5e9" stroke-opacity="0.35" stroke-width="1.2"/>
-                <!-- Airfoil Profile -->
-                <path d="M 45 34 C 55 15, 135 16, 275 34 C 155 44, 65 48, 45 34 Z" fill="url(#airfoilGrad)" stroke="#38bdf8" stroke-width="1.8"/>
-                <!-- Chord nodes -->
-                <circle cx="45" cy="34" r="3" fill="#38bdf8"/>
-                <circle cx="115" cy="24" r="2.5" fill="#e0f2fe"/>
-                <circle cx="275" cy="34" r="2.5" fill="#38bdf8"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Projects Section -->
-  <section id="projects" class="py-20 sm:py-24">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Header + Filter Bar -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-top">
         <div>
-          <span class="font-mono text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-semibold">01 // Selected Work</span>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2">Engineering, Leadership & Data Projects</h2>
-          <p class="text-slate-600 dark:text-slate-400 mt-2 max-w-2xl text-sm sm:text-base">
-            Filter across technical aerospace design, industry shadowing, student governance, and data communication initiatives. Select any project to inspect specifications and outcomes.
-          </p>
+          <h1>Nardos Mistire Wolde</h1>
+          <div class="subtitle">Mechanical Engineering (B.S. Candidate, WSU Everett) · Aerospace Engineering (A.S.)</div>
         </div>
+        <nav aria-label="Primary navigation">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Technical Skills</a>
+          <a href="https://www.linkedin.com/in/nardoswolde" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/Nardosmisu" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </div>
+      <p class="intro">
+        Technical archive of engineering simulations, physical prototypes, and analytical workflows—focused on <strong>molecular dynamics</strong>, <strong>mechanical design</strong>, and <strong>multi-variable data modeling</strong>. Select any project title below to inspect methodology, plots, and test footage.
+      </p>
+    </header>
 
-        <!-- Interactive Category Filter Buttons -->
-        <div id="filter-bar" role="tablist" aria-label="Filter projects by category" class="flex flex-wrap gap-2">
-          <button type="button" data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-sky-600 text-white shadow-sm shadow-sky-500/20">
-            All <span class="ml-1 opacity-80 font-mono">(4)</span>
-          </button>
-          <button type="button" data-filter="aerospace" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-sky-500/50">
-            Aerospace & Engineering
-          </button>
-          <button type="button" data-filter="leadership" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-sky-500/50">
-            Leadership & Outreach
-          </button>
-          <button type="button" data-filter="data" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-sky-500/50">
-            Data & Media
-          </button>
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Technical Projects (Click Title to Expand)</h2>
+
+      <div class="project-list">
+        <!-- Project 1: WSU Undergraduate Research (Expanded by default) -->
+        <details class="project" open>
+          <summary class="project-summary">
+            <div class="project-title-wrap">
+              <span class="project-title">Investigation of Dynamic Testing and Simulation for Aerospace Safety Applications</span>
+              <span class="project-meta">WSU Sponsored Undergraduate Research · LAMMPS / MATLAB / OVITO</span>
+            </div>
+            <span class="toggle-indicator" aria-hidden="true"></span>
+          </summary>
+
+          <div class="project-body">
+            <ul>
+              <li><strong>Objective:</strong> Investigating how material properties, loading conditions, and modeling assumptions affect structural response under dynamic and transient impact regimes to improve correlation between physical testing and computational models.</li>
+              <li><strong>Atomistic Simulation Pipeline:</strong> Built uniaxial tensile and compression molecular dynamics runs in <strong>LAMMPS</strong> on FCC aluminum baselines before expanding the simulation matrix to copper and ceramic material systems.</li>
+              <li><strong>Quantitative Post-Processing:</strong> Wrote automated <strong>MATLAB</strong> scripts (<code>plo_stress.m</code>) to parse <code>.def1.txt</code> deformation outputs, capturing linear elastic loading up to <strong>~8 GPa</strong> near <strong>0.15 strain</strong> followed by post-peak yielding and softening.</li>
+              <li><strong>Microstructural Visualization:</strong> Rendered atomistic lattice distortion and defect evolution in <strong>OVITO</strong> to correlate dislocation/structural transitions directly with macroscopic stress-strain curves.</li>
+            </ul>
+
+            <!-- GIF-like looping OVITO video + Static MATLAB Stress-Strain Plot -->
+            <div class="media-grid">
+              <figure class="media-card">
+                <div class="media-frame">
+                  <video
+                    src="assets/wsu-research-ovito.mp4"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    aria-label="OVITO atomistic simulation of aluminum under uniaxial tensile strain"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                  ></video>
+                  <div class="media-fallback">
+                    Upload OVITO clip to:<br><strong>assets/wsu-research-ovito.mp4</strong>
+                  </div>
+                </div>
+                <figcaption>OVITO atomistic lattice evolution during uniaxial tensile loading (Al baseline).</figcaption>
+              </figure>
+
+              <figure class="media-card">
+                <div class="media-frame light-bg">
+                  <img
+                    src="assets/wsu-research-stress-strain.png"
+                    alt="MATLAB stress-strain curve showing stress in GPa versus strain up to 0.2"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                  />
+                  <div class="media-fallback">
+                    Upload MATLAB plot to:<br><strong>assets/wsu-research-stress-strain.png</strong>
+                  </div>
+                </div>
+                <figcaption>MATLAB stress-strain response extracted from LAMMPS deformation output (~8 GPa peak at 0.15 strain).</figcaption>
+              </figure>
+            </div>
+
+            <div class="tags">
+              <span class="tag">LAMMPS</span>
+              <span class="tag">OVITO</span>
+              <span class="tag">MATLAB</span>
+              <span class="tag">Molecular Dynamics</span>
+              <span class="tag">Stress-Strain Analysis</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Project 2: Stair-Climbing Robot -->
+        <details class="project">
+          <summary class="project-summary">
+            <div class="project-title-wrap">
+              <span class="project-title">Tri-Lobe Stair-Climbing Robot</span>
+              <span class="project-meta">Team Mechanical Prototype · Creo Parametric / Tamiya 4-Speed Gearbox / $20 Budget</span>
+            </div>
+            <span class="toggle-indicator" aria-hidden="true"></span>
+          </summary>
+
+          <div class="project-body">
+            <ul>
+              <li><strong>Mechanism Trade-Offs:</strong> Modeled multiple climbing geometries in <strong>Creo Parametric</strong> with a two-person team and selected a three-spoke (tri-lobe) rotary leg profile to hook onto vertical step risers without complex linkages.</li>
+              <li><strong>Drivetrain &amp; Budget Optimization:</strong> Built under a strict <strong>$20 total hardware budget</strong> using a <strong>Tamiya 4-Speed Crank Axle Gearbox</strong> driving a central shaft coupled directly to custom-cut corrugated cardboard tri-lobe plates and a rear stabilizer tail.</li>
+              <li><strong>Performance Advantage:</strong> Minimized chassis mass through cardboard structural cutouts so a compact battery-powered DC motor delivered enough torque at the axle to climb multi-step wooden test stairs reliably in competition.</li>
+            </ul>
+
+            <!-- GIF-like looping Stair Climb Video + Build Photo -->
+            <div class="media-grid">
+              <figure class="media-card">
+                <div class="media-frame">
+                  <video
+                    src="assets/stair-climber-test.mp4"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    aria-label="Stair-climbing robot ascending wooden test stairs"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                  ></video>
+                  <div class="media-fallback">
+                    Upload climb test video to:<br><strong>assets/stair-climber-test.mp4</strong>
+                  </div>
+                </div>
+                <figcaption>Competition test run ascending multi-step wooden staircase under battery power.</figcaption>
+              </figure>
+
+              <figure class="media-card">
+                <div class="media-frame">
+                  <img
+                    src="assets/stair-climber-build.jpg"
+                    alt="Cardboard tri-lobe stair-climbing robot chassis and Tamiya gearbox assembly"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                  />
+                  <div class="media-fallback">
+                    Upload chassis photo to:<br><strong>assets/stair-climber-build.jpg</strong>
+                  </div>
+                </div>
+                <figcaption>Central axle coupling between the 4-speed gearbox and tri-lobe cardboard legs.</figcaption>
+              </figure>
+            </div>
+
+            <div class="tags">
+              <span class="tag">Creo Parametric</span>
+              <span class="tag">Gearbox &amp; Torque Sizing</span>
+              <span class="tag">Rapid Prototyping</span>
+              <span class="tag">Design-to-Cost ($20)</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Project 3: Tableau Multi-Variable Dashboard -->
+        <details class="project">
+          <summary class="project-summary">
+            <div class="project-title-wrap">
+              <span class="project-title">Multi-Variable U.S. Survey Data Filtering &amp; Tableau Dashboard (2020–2022)</span>
+              <span class="project-meta">Data Wrangling &amp; Statistical Interval Modeling · Tableau Public</span>
+            </div>
+            <span class="toggle-indicator" aria-hidden="true"></span>
+          </summary>
+
+          <div class="project-body">
+            <ul>
+              <li><strong>Dimensional Filtering &amp; Cleaning:</strong> Processed a multi-year U.S. federal survey dataset by isolating core variables (<strong>age, sex, state, year, and three primary response indicators</strong>) and stripping redundant columns to eliminate noise.</li>
+              <li><strong>Statistical Reliability Encoding:</strong> Retained upper and lower <strong>95% confidence interval (CI)</strong> bounds alongside point estimates so subgroup comparisons reflect true sampling uncertainty rather than raw averages alone.</li>
+              <li><strong>Interactive Architecture:</strong> Built a 9-view <strong>Tableau</strong> dashboard supporting cross-filtering across geographic states, demographic splits, and time periods.</li>
+            </ul>
+
+            <a
+              class="external-link"
+              href="https://public.tableau.com/app/profile/nardos.wolde/viz/MentalHealthCareAccessintheUnitedStates2020-2022_Nardos_W/MentalHealthCareAccessintheUnitedStates2020-2022_Nardos_W"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Interactive Tableau Dashboard &#8599;
+            </a>
+
+            <div class="tags">
+              <span class="tag">Tableau</span>
+              <span class="tag">Data Cleaning &amp; Filtering</span>
+              <span class="tag">95% Confidence Intervals</span>
+              <span class="tag">Multi-Variable Aggregation</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Project 4: Spotify Space Habitation Technical Series -->
+        <details class="project">
+          <summary class="project-summary">
+            <div class="project-title-wrap">
+              <span class="project-title">Making Space Hospitable for Humans — Spacecraft Life-Support Evolution</span>
+              <span class="project-meta">Two-Episode Technical Audio Series · Nvolve STEM</span>
+            </div>
+            <span class="toggle-indicator" aria-hidden="true"></span>
+          </summary>
+
+          <div class="project-body">
+            <ul>
+              <li><strong>Systems Comparison:</strong> Synthesized NASA technical documentation, mission logs, and astronaut records comparing early single-orbit life support (Vostok / Yuri Gagarin) against modern closed-loop environmental control systems (Soyuz MS-21).</li>
+              <li><strong>Technical Scope:</strong> Structured a two-episode audio breakdown covering cabin atmosphere regulation, microgravity physiological countermeasures, and engineering constraints for long-duration Mars transit.</li>
+            </ul>
+
+            <a
+              class="external-link"
+              href="https://open.spotify.com/episode/5yrX83CVyODSR3L7FOPACg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Listen on Spotify &#8599;
+            </a>
+
+            <div class="tags">
+              <span class="tag">Life Support Systems</span>
+              <span class="tag">Human Factors</span>
+              <span class="tag">Technical Synthesis</span>
+              <span class="tag">Audio Production</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Project 5: AIAA DBF (Lighter Mention - Next Year Prep) -->
+        <details class="project">
+          <summary class="project-summary">
+            <div class="project-title-wrap">
+              <span class="project-title">AIAA Design, Build, Fly (DBF) — UAV Sizing &amp; Fuselage CAD</span>
+              <span class="project-meta">WSU Everett Team · Next-Year Competition Preparation</span>
+            </div>
+            <span class="toggle-indicator" aria-hidden="true"></span>
+          </summary>
+
+          <div class="project-body">
+            <ul>
+              <li><strong>Constraint Modeling:</strong> Developing <strong>Python</strong> and <strong>MATLAB</strong> sensitivity scripts to evaluate propulsion power caps (<strong>100 W</strong> battery limit) and total gross weight limits (<strong>55 lb</strong> max) alongside <strong>Onshape</strong> fuselage packaging ahead of next year's competition cycle.</li>
+            </ul>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">MATLAB</span>
+              <span class="tag">Onshape</span>
+              <span class="tag">Aircraft Sizing</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Project 6: Boeing Scholars (Lighter Mention - Shadowing Phase) -->
+        <details class="project">
+          <summary class="project-summary">
+            <div class="project-title-wrap">
+              <span class="project-title">Boeing Scholars — Aerospace Structural &amp; Dynamic Testing</span>
+              <span class="project-meta">WSU Everett · Senior Capstone Shadowing</span>
+            </div>
+            <span class="toggle-indicator" aria-hidden="true"></span>
+          </summary>
+
+          <div class="project-body">
+            <ul>
+              <li><strong>Industry Shadowing:</strong> Shadowing senior engineering teams and Boeing mentors on experimental test setup, instrumentation, and manufacturing assembly workflows in preparation for leading independent testing next year.</li>
+            </ul>
+
+            <div class="tags">
+              <span class="tag">Experimental Instrumentation</span>
+              <span class="tag">Aerospace Structures</span>
+              <span class="tag">Systems Verification</span>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="skills-list">
+        <div class="skill-row">
+          <div class="skill-label">Simulation &amp; Analysis</div>
+          <div class="skill-items">LAMMPS (Molecular Dynamics), OVITO, MATLAB, Python, Tableau</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">CAD &amp; Mechanical</div>
+          <div class="skill-items">Creo Parametric, Onshape, Rapid Prototyping, Gearbox &amp; Linkage Sizing</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Data &amp; Scripting</div>
+          <div class="skill-items">Stress-Strain Curve Extraction, 95% CI Filtering, Multi-Variable Aggregation</div>
         </div>
       </div>
+    </section>
 
-      <!-- Projects Grid -->
-      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        <!-- Cards rendered dynamically via JavaScript for clean state sync & modal triggers -->
+    <!-- Footer -->
+    <footer>
+      <div>Nardos Mistire Wolde · Everett, WA</div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/nardoswolde" target="_blank" rel="noopener noreferrer">linkedin.com/in/nardoswolde</a>
+        <a href="https://github.com/Nardosmisu" target="_blank" rel="noopener noreferrer">github.com/Nardosmisu</a>
+        <button type="button" class="copy-btn" id="copy-email">nardos.wolde@wsu.edu</button>
       </div>
-    </div>
-  </section>
-
-  <!-- Technical Skills Section -->
-  <section id="skills" class="py-20 sm:py-24 bg-slate-100/70 dark:bg-slate-900/40 border-y border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-12">
-        <span class="font-mono text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-semibold">02 // Capabilities</span>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2">Technical Stack & Tools</h2>
-        <p class="text-slate-600 dark:text-slate-400 mt-2 max-w-2xl text-sm sm:text-base">
-          Core computational, parametric modeling, analytical, and visual communication tools applied across aerospace coursework, UAV competition sizing, and outreach initiatives.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Category 1: CAD & Simulation -->
-        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/25 flex items-center justify-center text-sky-600 dark:text-sky-400 mb-5">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold">CAD & Simulation</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5">
-              Parametric 3D solid modeling, aerodynamic fuselage lofting, assembly constraints, and structural packaging for UAV airframes.
-            </p>
-          </div>
-          <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-sm font-semibold text-slate-900 dark:text-white">Onshape</span>
-              <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-sky-500/10 text-sky-600 dark:text-sky-400">Parametric 3D CAD</span>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400">
-              Applied to AIAA Design, Build, Fly fuselage architecture, internal payload bay layout, and component mass-property tracking.
-            </p>
-          </div>
-        </div>
-
-        <!-- Category 2: Programming & Data -->
-        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-5">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold">Programming & Data</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5">
-              Numerical trade studies, constraint sensitivity modeling, engineering computation, and interactive visual analytics.
-            </p>
-          </div>
-          <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-sm font-semibold text-slate-900 dark:text-white">Python</span>
-              <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Sensitivity & Trade Scripts</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-sm font-semibold text-slate-900 dark:text-white">MATLAB</span>
-              <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Aerospace Modeling</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-sm font-semibold text-slate-900 dark:text-white">Tableau</span>
-              <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Data Visualization</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category 3: Design & Tools -->
-        <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-600 dark:text-amber-400 mb-5">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold">Design & Media Production</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5">
-              Technical presentation graphics, campus event branding, and educational multimedia storytelling for STEM communication.
-            </p>
-          </div>
-          <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-sm font-semibold text-slate-900 dark:text-white">Canva</span>
-              <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400">Visual Design & Decks</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-sm font-semibold text-slate-900 dark:text-white">CapCut</span>
-              <span class="text-xs font-mono px-2.5 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400">Video & Podcast Editing</span>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 pt-1">
-              Used for ASWSUE campus event campaigns and Space Habitation media production at Nvolve Inc.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience & Education Timeline Section -->
-  <section id="timeline" class="py-20 sm:py-24">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-14">
-        <span class="font-mono text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-semibold">03 // Trajectory</span>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-2">Education, Industry & Leadership Timeline</h2>
-        <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm sm:text-base">
-          Academic foundation in aerospace and mechanical engineering paired with industry mentorship and student advocacy.
-        </p>
-      </div>
-
-      <!-- Vertical Timeline -->
-      <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 sm:ml-6 space-y-10">
-
-        <!-- Item 1: WSU Everett -->
-        <div class="relative pl-8 sm:pl-10">
-          <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-white dark:ring-slate-950"></span>
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-sky-500/10 text-sky-600 dark:text-sky-400">CURRENT • JUNIOR STANDING</span>
-              <span class="font-mono text-xs text-slate-500 dark:text-slate-400">Everett, WA</span>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Washington State University Everett</h3>
-            <p class="text-sm font-medium text-sky-600 dark:text-sky-400 mt-0.5">Bachelor of Science in Mechanical Engineering</p>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
-              Pursuing upper-division mechanical engineering coursework with a technical focus on propulsion, aerodynamics, and systems design. Active contributor on the <strong class="font-semibold text-slate-900 dark:text-white">AIAA Design, Build, Fly (DBF)</strong> UAV team, <strong class="font-semibold text-slate-900 dark:text-white">Boeing Scholar</strong> cohort member, and <strong class="font-semibold text-slate-900 dark:text-white">ASWSUE Director of Diversity, Inclusion, and Access</strong> while leading the establishment of a campus <strong class="font-semibold text-slate-900 dark:text-white">SEDS</strong> chapter.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 2: Montgomery College -->
-        <div class="relative pl-8 sm:pl-10">
-          <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 ring-4 ring-white dark:ring-slate-950"></span>
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-300">DEGREE COMPLETED</span>
-              <span class="font-mono text-xs text-slate-500 dark:text-slate-400">Rockville / Germantown, MD</span>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Montgomery College</h3>
-            <p class="text-sm font-medium text-cyan-600 dark:text-cyan-400 mt-0.5">Associate of Science in Aerospace Engineering</p>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
-              Completed rigorous foundational coursework in multivariable calculus, differential equations, calculus-based physics, statics, dynamics, and introductory aerospace principles. Served as a <strong class="font-semibold text-slate-900 dark:text-white">STEM Ambassador</strong> and online mathematics tutor, mentoring peers in foundational STEM courses.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 3: Phi Theta Kappa Honor Society -->
-        <div class="relative pl-8 sm:pl-10">
-          <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 ring-4 ring-white dark:ring-slate-950"></span>
-          <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-300">ACADEMIC HONORS & LEADERSHIP</span>
-              <span class="font-mono text-xs text-slate-500 dark:text-slate-400">Honor Society</span>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Phi Theta Kappa Honor Society (PTK)</h3>
-            <p class="text-sm font-medium text-amber-600 dark:text-amber-400 mt-0.5">Inducted Scholar & Student Leader</p>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
-              Recognized for sustained academic excellence, scholarly integrity, and campus service during aerospace engineering studies, reinforcing a commitment to collaborative leadership and educational equity.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Links Section -->
-  <section id="contact" class="py-20 sm:py-24 bg-slate-100/80 dark:bg-slate-900/50 border-t border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 sm:p-12 shadow-xl shadow-slate-950/5 dark:shadow-black/30 relative overflow-hidden">
-        <div class="pointer-events-none absolute -right-16 -bottom-16 w-64 h-64 rounded-full bg-sky-500/10 blur-3xl"></div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative">
-          <div class="lg:col-span-7 space-y-4">
-            <span class="font-mono text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-semibold">04 // Connect</span>
-            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Open to Aerospace & Mechanical Engineering Opportunities</h2>
-            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-              Interested in discussing propulsion, UAV aerodynamics, undergraduate research, or mechanical/aerospace engineering internships? Reach out directly or connect across professional and academic networks.
-            </p>
-
-            <!-- Direct Action Pills -->
-            <div class="flex flex-wrap gap-3 pt-2">
-              <button type="button" id="copy-email-btn" class="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm shadow-md shadow-sky-500/20 transition-all">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                </svg>
-                <span>Copy Email Address</span>
-              </button>
-
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-sm border border-slate-200 dark:border-slate-700 transition-all">
-                <svg class="w-4 h-4 text-sky-600 dark:text-sky-400" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                </svg>
-                <span>LinkedIn Profile</span>
-              </a>
-
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-sm border border-slate-200 dark:border-slate-700 transition-all">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-                </svg>
-                <span>GitHub Repositories</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Quick Message Form -->
-          <div class="lg:col-span-5">
-            <form id="contact-form" class="rounded-2xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 p-5 space-y-3.5">
-              <div class="font-mono text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Direct Inquiry</div>
-              <div>
-                <label for="sender-name" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
-                <input id="sender-name" type="text" required placeholder="Alex Rivera" class="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-sky-500 transition-colors" />
-              </div>
-              <div>
-                <label for="sender-email" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
-                <input id="sender-email" type="email" required placeholder="alex@aerospace.org" class="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-sky-500 transition-colors" />
-              </div>
-              <div>
-                <label for="sender-message" class="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
-                <textarea id="sender-message" rows="3" required placeholder="Hello Nardos, I'd love to connect regarding..." class="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:border-sky-500 transition-colors"></textarea>
-              </div>
-              <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 dark:bg-sky-600 hover:bg-slate-800 dark:hover:bg-sky-500 text-white font-semibold text-sm transition-all">
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 border-t border-slate-200/80 dark:border-slate-800/80 text-center text-xs text-slate-500 dark:text-slate-400">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="font-mono">© 2026 Nardos Mistire Wolde • Mechanical & Aerospace Engineering</p>
-      <p class="font-mono">Washington State University Everett • Everett, WA</p>
-    </div>
-  </footer>
-
-  <!-- Project Detail Modal -->
-  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/75 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-2xl p-6 sm:p-8 space-y-6">
-      <!-- Close Button -->
-      <button id="close-modal-btn" type="button" aria-label="Close project details" class="absolute top-5 right-5 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-sky-500 transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-        </svg>
-      </button>
-
-      <!-- Modal Dynamic Content -->
-      <div id="modal-content" class="space-y-6"></div>
-    </div>
+    </footer>
   </div>
 
-  <!-- Interactive Application Logic -->
   <script>
-    // Structured dataset of Nardos Mistire Wolde's featured projects
-    const PROJECTS_DATA = [
-      {
-        id: 'aiaa-dbf',
-        category: 'aerospace',
-        categoryLabel: 'Aerospace & Engineering',
-        badgeColor: 'sky',
-        code: 'PRJ-01 // UAV SIZING & CAD',
-        title: 'AIAA Design, Build, Fly (DBF) UAV Sizing & Fuselage CAD',
-        summary: 'Parametric fuselage CAD modeling in Onshape paired with custom Python and MATLAB sensitivity scripts to optimize aircraft sizing under strict 100W battery power and 55-lb maximum takeoff weight constraints.',
-        tools: ['Python', 'MATLAB', 'Onshape', 'Aerodynamic Sizing'],
-        metrics: [
-          { label: 'Propulsion Power Cap', value: '100 W Constraint' },
-          { label: 'Max Gross Weight', value: '≤ 55.0 lb Limit' },
-          { label: 'CAD Environment', value: 'Onshape Parametric' }
-        ],
-        problemStatement: 'Competition mission scoring required maximizing payload fraction and cruise speed while strictly adhering to a 100-Watt battery power ceiling and a 55-lb total aircraft weight limit.',
-        methodology: [
-          'Developed parametric sensitivity analysis scripts in Python and MATLAB to sweep wing loading, aspect ratio, propulsion draw, and structural mass fractions.',
-          'Identified feasible design corridors showing how incremental fuselage drag and battery mass variations impact mission lap times.',
-          'Modeled the aerodynamic fuselage shell, bulkhead frames, and internal avionics/payload mounting bays in Onshape to validate center-of-gravity (CG) placement and manufacturability.'
-        ],
-        outcomes: [
-          'Established validated geometric and mass budgets guiding subsystem integration across propulsion and structures sub-teams.',
-          'Delivered a clean, modular Onshape fuselage assembly ready for fabrication and weight-and-balance verification.'
-        ]
-      },
-      {
-        id: 'boeing-scholars',
-        category: 'aerospace',
-        categoryLabel: 'Aerospace & Engineering',
-        badgeColor: 'sky',
-        code: 'PRJ-02 // INDUSTRY MENTORSHIP',
-        title: 'WSU Everett Boeing Scholars Program',
-        summary: 'Selected cohort scholar shadowing senior engineering students on an active Boeing-sponsored project with Boeing mentors, alongside Renton manufacturing observation to connect engineering design with commercial production.',
-        tools: ['Systems Engineering', 'Renton Manufacturing Observation', 'Boeing Mentorship', 'Technical Collaboration'],
-        metrics: [
-          { label: 'Sponsor Organization', value: 'The Boeing Company' },
-          { label: 'Site Observation', value: 'Renton Manufacturing' },
-          { label: 'Focus Area', value: 'Aerospace Engineering' }
-        ],
-        problemStatement: 'Translating classroom mechanical and aerospace fundamentals into the structured verification, manufacturing readiness, and engineering rigor expected in commercial aerospace programs.',
-        methodology: [
-          'Shadowed senior engineering students working on a Boeing-sponsored project with guidance from Boeing mentors across technical reviews and problem-solving milestones.',
-          'Participated in Renton manufacturing observation to see how commercial airframe assembly, tooling, flow lines, and quality standards operate at scale.',
-          'Engaged in direct mentorship discussions covering propulsion integration, materials and design trade-offs, and aerospace career pathways.'
-        ],
-        outcomes: [
-          'Gained first-hand insight into how engineering design decisions translate into Renton commercial manufacturing workflows.',
-          'Applied structured industry trade-study and documentation habits back into university UAV design work.'
-        ]
-      },
-      {
-        id: 'aswsue-seds-outreach',
-        category: 'leadership',
-        categoryLabel: 'Leadership & Outreach',
-        badgeColor: 'emerald',
-        code: 'PRJ-03 // GOVERNANCE & STEM',
-        title: 'ASWSUE Director of Diversity, Inclusion, and Access & Campus Events',
-        summary: 'Executive student government leadership organizing campus-wide cultural and civic programming—including WSU Everett’s Veterans Day event—founding a campus SEDS chapter, and mentoring students via STEM Ambassador outreach and online math tutoring.',
-        tools: ['Student Governance', 'SEDS Chapter Founding', 'Event Operations', 'STEM Tutoring', 'Canva'],
-        metrics: [
-          { label: 'Executive Role', value: 'ASWSUE Director' },
-          { label: 'Space Organization', value: 'SEDS Chapter Lead' },
-          { label: 'Academic Support', value: 'STEM Ambassador & Tutor' }
-        ],
-        problemStatement: 'Building an inclusive, connected engineering campus culture at WSU Everett while expanding space-industry access and foundational mathematics confidence for fellow students.',
-        methodology: [
-          'Directed diversity, inclusion, and access initiatives within ASWSUE, planning logistics, stakeholder coordination, and promotional campaigns for major campus events such as Veterans Day.',
-          'Spearheaded the establishment of a Students for the Exploration and Development of Space (SEDS) chapter at WSU Everett to connect students with space projects and national aerospace networks.',
-          'Served as a STEM Ambassador and online mathematics tutor, providing structured one-on-one problem-solving support across calculus and pre-engineering courses.'
-        ],
-        outcomes: [
-          'Delivered high-engagement campus community events and expanded institutional representation for underrepresented engineering students.',
-          'Created a dedicated student launchpad for space exploration programming at WSU Everett through SEDS.'
-        ]
-      },
-      {
-        id: 'nvolve-space-data',
-        category: 'data',
-        categoryLabel: 'Data & Media',
-        badgeColor: 'amber',
-        code: 'PRJ-04 // NVOLVE INC. PROJECTS',
-        title: 'Space Habitation Podcast & Tableau Data Visualization',
-        summary: 'Produced technical audio/video storytelling on human space habitation systems alongside interactive Tableau dashboards translating complex datasets into clear, actionable visual insights for Nvolve Inc.',
-        tools: ['Tableau', 'CapCut', 'Canva', 'Data Storytelling', 'Space Systems Research'],
-        metrics: [
-          { label: 'Organization', value: 'Nvolve Inc.' },
-          { label: 'Analytics Platform', value: 'Tableau Dashboards' },
-          { label: 'Media Production', value: 'Space Habitation Series' }
-        ],
-        problemStatement: 'Making technical concepts in human space habitation and multi-variable STEM datasets accessible, engaging, and intuitive for diverse audiences.',
-        methodology: [
-          'Researched life-support, habitat architecture, and human-factors challenges for long-duration space missions to script and edit Space Habitation podcast episodes using CapCut and Canva.',
-          'Cleaned, structured, and visualized program datasets in Tableau, designing interactive charts and filters to highlight key performance patterns.',
-          'Combined narrative clarity with quantitative precision across both audio-visual and dashboard deliverables.'
-        ],
-        outcomes: [
-          'Published engaging educational media exploring the engineering realities of off-world human habitation.',
-          'Delivered clean Tableau visualizations enabling stakeholders to explore trends rapidly without raw spreadsheet overhead.'
-        ]
-      }
-    ];
-
-    // DOM References
-    const projectsGrid = document.getElementById('projects-grid');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const modal = document.getElementById('project-modal');
-    const modalContent = document.getElementById('modal-content');
-    const closeModalBtn = document.getElementById('close-modal-btn');
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const copyEmailBtn = document.getElementById('copy-email-btn');
-    const contactForm = document.getElementById('contact-form');
-    const toastContainer = document.getElementById('toast-container');
-
-    // Helper: Custom Toast Notification (Never uses alert())
-    function showToast(message) {
-      const toast = document.createElement('div');
-      toast.className = 'pointer-events-auto flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900 dark:bg-slate-800 text-white text-xs sm:text-sm font-medium shadow-xl border border-sky-500/40 transition-all duration-300 translate-y-2 opacity-0';
-      toast.innerHTML = `
-        <span class="w-2 h-2 rounded-full bg-sky-400 shrink-0"></span>
-        <span>${message}</span>
-      `;
-      toastContainer.appendChild(toast);
-
-      requestAnimationFrame(() => {
-        toast.classList.remove('translate-y-2', 'opacity-0');
-      });
-
-      setTimeout(() => {
-        toast.classList.add('translate-y-2', 'opacity-0');
-        setTimeout(() => toast.remove(), 300);
-      }, 3200);
-    }
-
-    // Render Project Cards based on active category filter
-    function renderProjects(filter = 'all') {
-      const filtered = filter === 'all'
-        ? PROJECTS_DATA
-        : PROJECTS_DATA.filter(p => p.category === filter);
-
-      projectsGrid.innerHTML = filtered.map(project => {
-        const badgeStyles = {
-          sky: 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/25',
-          emerald: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/25',
-          amber: 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/25'
-        }[project.badgeColor];
-
-        const metricPills = project.metrics.map(m => `
-          <div class="px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/80 dark:border-slate-800/80">
-            <div class="font-mono text-[10px] uppercase text-slate-500 dark:text-slate-400">${m.label}</div>
-            <div class="text-xs font-semibold text-slate-900 dark:text-slate-100 mt-0.5">${m.value}</div>
-          </div>
-        `).join('');
-
-        const toolTags = project.tools.map(t => `
-          <span class="px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700/70">${t}</span>
-        `).join('');
-
-        return `
-          <article class="project-card rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500/50 dark:hover:border-sky-500/50 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:shadow-sky-500/5 flex flex-col justify-between">
-            <div>
-              <!-- Top Metadata Row -->
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                <span class="font-mono text-[11px] text-slate-500 dark:text-slate-400">${project.code}</span>
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border ${badgeStyles}">${project.categoryLabel}</span>
-              </div>
-
-              <!-- Title & Summary -->
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-snug">
-                ${project.title}
-              </h3>
-              <p class="text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
-                ${project.summary}
-              </p>
-
-              <!-- Key Spec Metrics -->
-              <div class="grid grid-cols-3 gap-2 mt-5">
-                ${metricPills}
-              </div>
-            </div>
-
-            <!-- Footer: Tools + Inspect Button -->
-            <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div class="flex flex-wrap gap-1.5">
-                ${toolTags}
-              </div>
-
-              <button type="button" data-project-id="${project.id}" class="open-modal-btn shrink-0 inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 dark:bg-sky-500/15 hover:bg-sky-600 dark:hover:bg-sky-500 text-white dark:text-sky-300 hover:text-white border border-transparent dark:border-sky-500/30 text-xs font-semibold transition-all">
-                <span>Inspect Specs</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                </svg>
-              </button>
-            </div>
-          </article>
-        `;
-      }).join('');
-
-      // Attach modal open listeners
-      document.querySelectorAll('.open-modal-btn').forEach(btn => {
-        btn.addEventListener('click', () => openProjectModal(btn.dataset.projectId));
+    // Copy email cleanly without alert()
+    const copyBtn = document.getElementById('copy-email');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const email = 'nardos.wolde@wsu.edu';
+        const temp = document.createElement('input');
+        temp.value = email;
+        document.body.appendChild(temp);
+        temp.select();
+        try {
+          document.execCommand('copy');
+          const original = copyBtn.textContent;
+          copyBtn.textContent = 'Copied: ' + email;
+          setTimeout(() => { copyBtn.textContent = original; }, 2000);
+        } catch (err) {
+          copyBtn.textContent = email;
+        }
+        document.body.removeChild(temp);
       });
     }
-
-    // Open Modal with Detailed Specifications & Outcomes
-    function openProjectModal(projectId) {
-      const project = PROJECTS_DATA.find(p => p.id === projectId);
-      if (!project) return;
-
-      const metricsGrid = project.metrics.map(m => `
-        <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
-          <div class="font-mono text-[11px] uppercase text-slate-500 dark:text-slate-400">${m.label}</div>
-          <div class="text-sm font-bold text-slate-900 dark:text-white mt-1">${m.value}</div>
-        </div>
-      `).join('');
-
-      const methodologyList = project.methodology.map(item => `
-        <li class="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 shrink-0"></span>
-          <span>${item}</span>
-        </li>
-      `).join('');
-
-      const outcomesList = project.outcomes.map(item => `
-        <li class="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
-          <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-          </svg>
-          <span>${item}</span>
-        </li>
-      `).join('');
-
-      modalContent.innerHTML = `
-        <div class="pr-8">
-          <div class="font-mono text-xs text-sky-600 dark:text-sky-400 font-semibold">${project.code} • ${project.categoryLabel}</div>
-          <h3 id="modal-title" class="text-2xl font-bold text-slate-900 dark:text-white mt-1.5">${project.title}</h3>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          ${metricsGrid}
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="font-mono text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Objective & Scope</h4>
-          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${project.problemStatement}</p>
-        </div>
-
-        <div class="space-y-2.5">
-          <h4 class="font-mono text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Engineering & Execution Approach</h4>
-          <ul class="space-y-2">
-            ${methodologyList}
-          </ul>
-        </div>
-
-        <div class="rounded-2xl bg-emerald-500/5 border border-emerald-500/20 p-4 space-y-2.5">
-          <h4 class="font-mono text-xs uppercase tracking-wider text-emerald-700 dark:text-emerald-400 font-semibold">Key Outcomes & Deliverables</h4>
-          <ul class="space-y-2">
-            ${outcomesList}
-          </ul>
-        </div>
-
-        <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-200 dark:border-slate-800">
-          <div class="flex flex-wrap gap-1.5">
-            ${project.tools.map(t => `<span class="px-2.5 py-1 rounded-lg font-mono text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">${t}</span>`).join('')}
-          </div>
-          <button type="button" onclick="closeProjectModal()" class="px-4 py-2 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs font-semibold transition-colors">
-            Close Dossier
-          </button>
-        </div>
-      `;
-
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeProjectModal() {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = '';
-    }
-
-    // Category Filter Button Handling
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => {
-          b.classList.remove('active', 'bg-sky-600', 'text-white', 'shadow-sm', 'shadow-sky-500/20');
-          b.classList.add('bg-white', 'dark:bg-slate-900', 'text-slate-700', 'dark:text-slate-300', 'border', 'border-slate-200', 'dark:border-slate-800');
-        });
-        btn.classList.add('active', 'bg-sky-600', 'text-white', 'shadow-sm', 'shadow-sky-500/20');
-        btn.classList.remove('bg-white', 'dark:bg-slate-900', 'text-slate-700', 'dark:text-slate-300', 'border', 'border-slate-200', 'dark:border-slate-800');
-        renderProjects(btn.dataset.filter);
-      });
-    });
-
-    // Modal Dismiss Listeners
-    closeModalBtn.addEventListener('click', closeProjectModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeProjectModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        closeProjectModal();
-      }
-    });
-
-    // Dark / Light Theme Toggle
-    themeToggleBtn.addEventListener('click', () => {
-      const htmlEl = document.documentElement;
-      const isDark = htmlEl.classList.toggle('dark');
-      showToast(isDark ? 'Switched to Aerospace Dark mode' : 'Switched to Blueprint Light mode');
-    });
-
-    // Mobile Navigation Toggle
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-
-    // Copy Email using execCommand fallback for iframe compatibility
-    copyEmailBtn.addEventListener('click', () => {
-      const email = 'nardos.wolde@wsu.edu';
-      const tempInput = document.createElement('input');
-      tempInput.value = email;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      try {
-        document.execCommand('copy');
-        showToast(`Copied ${email} to clipboard`);
-      } catch (err) {
-        showToast(`Contact email: ${email}`);
-      }
-      document.body.removeChild(tempInput);
-    });
-
-    // Contact Form Submission Feedback
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('sender-name').value.trim();
-      showToast(`Thank you, ${name}. Your message has been logged.`);
-      contactForm.reset();
-    });
-
-    // Initialize Portfolio Grid on Load
-    window.addEventListener('DOMContentLoaded', () => {
-      renderProjects('all');
-    });
   </script>
 </body>
 </html>
